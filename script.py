@@ -82,8 +82,9 @@ courseid = "17"  # Exchange with valid id.
 sec = LocalGetSections(courseid)
 
 # Output readable JSON, but print only summary
-print(json.dumps(sec.getsections[1]['summary'], indent=4, sort_keys=True))
-
+#print(json.dumps(sec.getsections[1]['summary'], indent=4, sort_keys=True))
+print(json.dumps(sec.getsections, indent=4, sort_keys=True))
+"""
 # Split the section name by dash and convert the date into the timestamp, it takes the current year, so think of a way for making sure it has the correct year!
 month = parser.parse(list(sec.getsections)[1]['name'].split('-')[0])
 # Show the resulting timestamp
@@ -107,4 +108,4 @@ data[0]['section'] = 1
 sec_write = LocalUpdateSections(courseid, data)
 
 sec = LocalGetSections(courseid)
-print(json.dumps(sec.getsections[1]['summary'], indent=4, sort_keys=True))
+print(json.dumps(sec.getsections[1]['summary'], indent=4, sort_keys=True))"""
