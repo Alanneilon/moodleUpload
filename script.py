@@ -77,7 +77,7 @@ class LocalUpdateSections(object):
 ################################################
 
 
-courseid = "14"  # Exchange with valid id.
+courseid = "17"  # Exchange with valid id.
 # Get all sections of the course.
 sec = LocalGetSections(courseid)
 
