@@ -86,6 +86,17 @@ print(json.dumps(sec.getsections[10], indent=4, sort_keys=True))
 #print(json.dumps(sec.getsections, indent=4, sort_keys=True))
 summary="https://mikhail-cct.github.io/ooapp/wk2/#/"
 
+#  Assemble the payload
+data = [{'type': 'num', 'section': 0, 'summary': '', 'summaryformat': 1, 'visible': 1 , 
+'highlight': 0, 'sectionformatoptions': [{'name': 'level', 'value': '1'}]}]
+
+# Assign the correct summary
+data[2]['summary'] = summary
+sec_write = LocalUpdateSections(courseid, data)
+
+sec = LocalGetSections(courseid)
+print(json.dumps(sec.getsections, indent=4, sort_keys=True))
+
 """
 # Split the section name by dash and convert the date into the timestamp, it takes the current year, so think of a way for making sure it has the correct year!
 month = parser.parse(list(sec.getsections)[1]['name'].split('-')[0])
