@@ -82,7 +82,7 @@ courseid = "17"  # Exchange with valid id.
 sec = LocalGetSections(courseid)
 
 # Output readable JSON, but print only summary
-print(json.dumps(sec.getsections[1], indent=4, sort_keys=True))
+print(json.dumps(sec.getsections[0], indent=4, sort_keys=True))
 #print(json.dumps(sec.getsections, indent=4, sort_keys=True))
 """
 # Split the section name by dash and convert the date into the timestamp, it takes the current year, so think of a way for making sure it has the correct year!
