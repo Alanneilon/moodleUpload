@@ -91,10 +91,13 @@ data = [{'type': 'num', 'section': 0, 'summary': '', 'summaryformat': 1, 'visibl
 'highlight': 0, 'sectionformatoptions': [{'name': 'level', 'value': '1'}]}]
 
 # Assign the correct summary
-data[2]['summary'] = summary
-sec_write = LocalUpdateSections(courseid, data)
+data[0]['summary'] = summary
 
 sec = LocalGetSections(courseid)
+
+sec_write = LocalUpdateSections(courseid, data)
+
+
 print(json.dumps(sec.getsections, indent=4, sort_keys=True))
 
 """
