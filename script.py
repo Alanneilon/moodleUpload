@@ -84,10 +84,12 @@ sec = LocalGetSections(courseid)
 # Output readable JSON, but print only summary
 print(json.dumps(sec.getsections[10], indent=4, sort_keys=True))
 #print(json.dumps(sec.getsections, indent=4, sort_keys=True))
-summary="https://mikhail-cct.github.io/ooapp/wk2/#/"
+
+
+summary="<a href=\'https://mikhail-cct.github.io/ooapp/wk2/#\'>Week 2: Data types</a><br>"
 
 #  Assemble the payload
-data = [{'type': 'num', 'section': 0, 'summary': '', 'summaryformat': 1, 'visible': 1 , 
+data = [{'type': 'num', 'section': 2, 'summary': '', 'summaryformat': 1, 'visible': 1 , 
 'highlight': 0, 'sectionformatoptions': [{'name': 'level', 'value': '1'}]}]
 
 # Assign the correct summary
