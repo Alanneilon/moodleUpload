@@ -95,6 +95,11 @@ section=2
 data = [{'type': 'num', 'section': 2, 'summary': '', 'summaryformat': 1, 'visible': 1 , 
 'highlight': 0, 'sectionformatoptions': [{'name': 'level', 'value': '1'}]}]
 
+path=os.getcwd()
+filelist=os.listdir()
+print(path)
+print(filelist[0])
+
 # Assign the correct summary
 data[0]['summary'] = summary
 data[0]['section'] = section
@@ -106,10 +111,7 @@ sec_write = LocalUpdateSections(courseid, data)
 
 print(json.dumps(sec.getsections, indent=4, sort_keys=True))
 
-path=os.getcwd()
-filelist=os.listdir()
-print(path)
-print(filelist)
+
 
 
 """
