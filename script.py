@@ -2,6 +2,8 @@ from requests import get, post
 import json
 from dateutil import parser
 import datetime
+import os
+
 
 # Module variables to connect to moodle api:
 # Insert token and URL for your site here.
@@ -103,6 +105,12 @@ sec_write = LocalUpdateSections(courseid, data)
 
 
 print(json.dumps(sec.getsections, indent=4, sort_keys=True))
+
+path=os.getcwd()
+filelist=os.listdir()
+print(path)
+print(filelist)
+
 
 """
 # Split the section name by dash and convert the date into the timestamp, it takes the current year, so think of a way for making sure it has the correct year!
