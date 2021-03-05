@@ -87,6 +87,7 @@ print(json.dumps(sec.getsections[10], indent=4, sort_keys=True))
 
 
 summary="<a href=\'https://mikhail-cct.github.io/ooapp/wk2/#\'>Week 2: Data types</a><br>"
+section=2
 
 #  Assemble the payload
 data = [{'type': 'num', 'section': 2, 'summary': '', 'summaryformat': 1, 'visible': 1 , 
@@ -94,6 +95,7 @@ data = [{'type': 'num', 'section': 2, 'summary': '', 'summaryformat': 1, 'visibl
 
 # Assign the correct summary
 data[0]['summary'] = summary
+data[0]['section'] = section
 
 sec = LocalGetSections(courseid)
 
