@@ -3,7 +3,7 @@ import json
 from dateutil import parser
 import datetime
 import os
-
+import re
 
 # Module variables to connect to moodle api:
 # Insert token and URL for your site here.
@@ -95,10 +95,7 @@ section=2
 data = [{'type': 'num', 'section': 2, 'summary': '', 'summaryformat': 1, 'visible': 1 , 
 'highlight': 0, 'sectionformatoptions': [{'name': 'level', 'value': '1'}]}]
 
-path=os.getcwd()
-filelist=os.listdir()
-print(path)
-print(filelist[0])
+
 
 # Assign the correct summary
 data[0]['summary'] = summary
@@ -111,7 +108,27 @@ sec_write = LocalUpdateSections(courseid, data)
 
 print(json.dumps(sec.getsections, indent=4, sort_keys=True))
 
+path=os.getcwd()
+filelist=os.listdir()
+print(path)
+print(filelist)
+"""for files in filelist:"""
+for i in range(0, len(filelist)):
+    print(filelist[i])
+    wkno=[]
+    wk= re.findall('[0-9]+', filelist[i])
+    print (wk)
+    wkno.append(wk)
+    """wkno=int(wk)
+    print(wkno)
+for files in os.walk("."):
+   for name in files:
+      print(name)
+for dirs in os.walk("."):
+   for folder in dirs:
+      print(folder)"""
 
+print(wkno)  
 
 
 """
