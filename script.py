@@ -113,22 +113,35 @@ filelist=os.listdir()
 print(path)
 print(filelist)
 """for files in filelist:"""
-for i in range(0, len(filelist)):
-    print(filelist[i])
+
+def getNoFromFolder(filelist):
     wkno=[]
-    wk= re.findall('[0-9]+', filelist[i])
-    print (wk)
-    wkno.append(wk)
-    """wkno=int(wk)
-    print(wkno)
-for files in os.walk("."):
+    for i in range(0, len(filelist)):
+        print(filelist[i])
+        wk=re.findall('[0-9]+', filelist[i])
+        print(wk)
+        wkno.extend(wk)
+    return wkno
+
+def convertToInt(stringList):
+    wknum=[]
+    wknum = map(int, stringList)
+    return wknum
+"""for files in os.walk("."):
    for name in files:
       print(name)
 for dirs in os.walk("."):
    for folder in dirs:
       print(folder)"""
 
+wkno=getNoFromFolder(filelist)
+print("Hello")
 print(wkno)  
+print(type(wkno[0]))
+print("Hi")
+wknum=convertToInt(wkno)
+print(wkno)
+print(type(wkno[0]))
 
 
 """
