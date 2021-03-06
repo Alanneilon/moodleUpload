@@ -112,7 +112,7 @@ path=os.getcwd()
 filelist=os.listdir()
 print(path)
 print(filelist)
-"""for files in filelist:"""
+
 
 def getNoFromFolder(filelist):
     wkno=[]
@@ -123,23 +123,19 @@ def getNoFromFolder(filelist):
         wkno.extend(wk)
     return wkno
 
-def convertToInt(stringList):
-    wknum=[]
-    wknum = map(int, stringList)
-    return wknum
-"""for files in os.walk("."):
-   for name in files:
-      print(name)
-for dirs in os.walk("."):
-   for folder in dirs:
-      print(folder)"""
+def convertStringToInt(stringList):
+    n = 0
+    while n < len(stringList):
+        stringList[n] = int(stringList[n])
+        n += 1
+    return(stringList)
 
 wkno=getNoFromFolder(filelist)
 print("Hello")
 print(wkno)  
 print(type(wkno[0]))
 print("Hi")
-wknum=convertToInt(wkno)
+wknum=convertStringToInt(wkno)
 print(wkno)
 print(type(wkno[0]))
 
