@@ -70,13 +70,23 @@ def convertStringToInt(stringList):
         n += 1
     return(stringList)
 
-def updateLinks( wkno):
+def updateLinks(wkno):
     summaryList=[]
     for i in range(0, len(wkno)):
         no=wkno[i]
-        summary="<a href=\'https://mikhail-cct.github.io/ooapp/wk{}/#\'>Week {}: Data types</a><br>".format(no,no)
+        summary="<a href=\'https://mikhail-cct.github.io/ooapp/wk{}/#\'>Week {}: Data types</a><br><a href=\"https://mikhail-cct.github.io/ca3-test/wk{}.pdf\">Week {}: Modules.pdf</a>".format(no,no,no,no)
         summaryList.append(summary)
     return summaryList
+
+def updateAllSec(courseid,data,wknum,sumList):
+
+    for i in range(0, len(wknum)):
+        data[0]['summary'] = sumList[i]
+        data[0]['section'] = wknum[i]
+        sec_write = LocalUpdateSections(courseid, data)
+
+
+
 
     
 
@@ -109,33 +119,33 @@ class LocalUpdateSections(object):
 
 
 courseid = "17"  # Exchange with valid id.
+
 # Get all sections of the course.
 sec = LocalGetSections(courseid)
 
-# Output readable JSON, but print only summary
-print(json.dumps(sec.getsections[10], indent=4, sort_keys=True))
-#print(json.dumps(sec.getsections, indent=4, sort_keys=True))
-
-
-summary="<a href=\'https://mikhail-cct.github.io/ooapp/wk2/#\'>Week 2: Data types</a><br>"
-section=2
-
 #  Assemble the payload
-data = [{'type': 'num', 'section':2 , 'summary': '', 'summaryformat': 1, 'visible': 1 , 
+data = [{'type': 'num', 'section':0 , 'summary': '', 'summaryformat': 1, 'visible': 1 , 
 'highlight': 0, 'sectionformatoptions': [{'name': 'level', 'value': '1'}]}]
+
+# Output readable JSON, but print only summary
+#print(json.dumps(sec.getsections[10], indent=4, sort_keys=True))
+print(json.dumps(sec.getsections, indent=4, sort_keys=True))
+
+
+#summary="<a href=\'https://mikhail-cct.github.io/ooapp/wk2/#\'>Week 2: Data types</a><br>"
+#section=2
+
+
 
 
 
 # Assign the correct summary
-data[0]['summary'] = summary
-data[0]['section'] = section
+#data[0]['summary'] = summary
+#data[0]['section'] = section
 
-sec = LocalGetSections(courseid)
+#sec = LocalGetSections(courseid)
 
-sec_write = LocalUpdateSections(courseid, data)
-
-
-print(json.dumps(sec.getsections, indent=4, sort_keys=True))
+#sec_write = LocalUpdateSections(courseid, data)
 
 path=os.getcwd()
 filelist=os.listdir()
@@ -155,6 +165,9 @@ print(wknum)
 print(type(wknum[0]))
 sumList=updateLinks(wkno)
 print(sumList)
+updateSec=updateAllSec(courseid,data,wknum,sumList)
+sec = LocalGetSections(courseid)
+print(json.dumps(sec.getsections, indent=4, sort_keys=True))
 
 
 """
