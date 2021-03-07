@@ -1,16 +1,7 @@
 from requests import get, post
 import json
-from dateutil import parser
-import datetime
 import os
 import re
-
-# Module variables to connect to moodle api:
-# Insert token and URL for your site here.
-# Mind that the endpoint can start with "/moodle" depending on your installation.
-KEY = "8cc87cf406775101c2df87b07b3a170d"
-URL = "https://034f8a1dcb5c.eu.ngrok.io"
-ENDPOINT = "/webservice/rest/server.php"
 
 
 def rest_api_parameters(in_args, prefix='', out_dict=None):
@@ -53,7 +44,7 @@ def call(fname, **kwargs):
     if type(response) == dict and response.get('exception'):
         raise SystemError("Error calling Moodle API\n", response)
     return response
-#################################################################################################################
+#####################################################################################################################
 def getNoFromFolder(filelist):
 #function to extract numbers from folder and filenames
     wkno=[]
@@ -121,6 +112,12 @@ class LocalUpdateSections(object):
             'local_wsmanagesections_update_sections', courseid=cid, sections=sectionsdata)
 
 ######################################################################################################################
+# Module variables to connect to moodle api:
+# Insert token and URL for your site here.
+# Mind that the endpoint can start with "/moodle" depending on your installation.
+KEY = "8cc87cf406775101c2df87b07b3a170d"
+URL = "https://034f8a1dcb5c.eu.ngrok.io"
+ENDPOINT = "/webservice/rest/server.php"
 
 courseid = "17"  # id of course required to be updated
 
