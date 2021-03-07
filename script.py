@@ -54,6 +54,35 @@ def call(fname, **kwargs):
         raise SystemError("Error calling Moodle API\n", response)
     return response
 
+def getNoFromFolder(filelist):
+    wkno=[]
+    for i in range(0, len(filelist)):
+        print(filelist[i])
+        wk=re.findall('[0-9]+', filelist[i])
+        print(wk)
+        wkno.extend(wk)
+    return wkno
+
+def convertStringToInt(stringList):
+    n = 0
+    while n < len(stringList):
+        stringList[n] = int(stringList[n])
+        n += 1
+    return(stringList)
+
+def updateLinks( wkno):
+    summaryList=[]
+    for i in range(0, len(wkno)):
+        no=wkno[i]
+        summary="<a href=\'https://mikhail-cct.github.io/ooapp/wk{}/#\'>Week {}: Data types</a><br>".format(no,no)
+        summaryList.append(summary)
+    return summaryList
+
+    
+
+
+
+
 ################################################
 # Rest-Api classes
 ################################################
@@ -92,7 +121,7 @@ summary="<a href=\'https://mikhail-cct.github.io/ooapp/wk2/#\'>Week 2: Data type
 section=2
 
 #  Assemble the payload
-data = [{'type': 'num', 'section': 2, 'summary': '', 'summaryformat': 1, 'visible': 1 , 
+data = [{'type': 'num', 'section':2 , 'summary': '', 'summaryformat': 1, 'visible': 1 , 
 'highlight': 0, 'sectionformatoptions': [{'name': 'level', 'value': '1'}]}]
 
 
@@ -114,21 +143,7 @@ print(path)
 print(filelist)
 
 
-def getNoFromFolder(filelist):
-    wkno=[]
-    for i in range(0, len(filelist)):
-        print(filelist[i])
-        wk=re.findall('[0-9]+', filelist[i])
-        print(wk)
-        wkno.extend(wk)
-    return wkno
 
-def convertStringToInt(stringList):
-    n = 0
-    while n < len(stringList):
-        stringList[n] = int(stringList[n])
-        n += 1
-    return(stringList)
 
 wkno=getNoFromFolder(filelist)
 print("Hello")
@@ -136,8 +151,10 @@ print(wkno)
 print(type(wkno[0]))
 print("Hi")
 wknum=convertStringToInt(wkno)
-print(wkno)
-print(type(wkno[0]))
+print(wknum)
+print(type(wknum[0]))
+sumList=updateLinks(wkno)
+print(sumList)
 
 
 """
